@@ -1,0 +1,101 @@
+<odoo>
+  <data>
+
+    <template id="portal_my_ships" name="My Ships" inherit_id="portal.portal_layout">
+      <xpath expr="//div[@id='wrap']" position="inside">
+        <!-- Ship Listing Section -->
+        <section class="container mt-4 mb-5">
+          <h2>My Registered Ships</h2>
+          <t t-if="ships">
+            <table class="table table-striped table-hover mt-3">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>IMO Number</th>
+                  <th>Type</th>
+                  <th>Status</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <t t-foreach="ships" t-as="ship">
+                  <tr>
+                    <td><t t-esc="ship.name" /></td>
+                    <td><t t-esc="ship.imo_number" /></td>
+                    <td><t t-esc="ship.ship_type" /></td>
+                    <td><t t-esc="ship.status" /></td>
+                    <td>
+                      <a t-att-href="'/my/ship/%s' % ship.id" class="btn btn-sm btn-secondary">View</a>
+                    </td>
+                  </tr>
+                </t>
+              </tbody>
+            </table>
+          </t>
+          <t t-else="">
+            <p>You have not registered any ships yet.</p>
+          </t>
+        </section>
+
+        <!-- Ship Registration Form Section -->
+        <section class="container mt-4 mb-5">
+          <h2>Register a Ship</h2>
+          <form action="/my/ships" method="post" class="oe_website_form form-horizontal">
+            <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()" />
+
+            <div class="form-group">
+              <label for="name">Ship Name</label>
+              <input type="text" name="name" id="name" class="form-control" required="required" />
+            </div>
+
+            <div class="form-group">
+              <label for="imo_number">IMO Number</label>
+              <input type="text" name="imo_number" id="imo_number" class="form-control" />
+            </div>
+
+            <div class="form-group">
+              <label for="ship_type">Ship Type</label>
+              <select name="ship_type" id="ship_type" class="form-control">
+                <option value="cargo">Cargo</option>
+                <option value="tanker">Tanker</option>
+                <option value="container">Container</option>
+                <option value="passenger">Passenger</option>
+                <option value="fishing">Fishing</option>
+                <option value="naval">Naval</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="flag">Flag</label>
+              <input type="text" name="flag" id="flag" class="form-control" />
+            </div>
+
+            <div class="form-group">
+              <label for="build_year">Build Year</label>
+              <input type="number" name="build_year" id="build_year" class="form-control" />
+            </div>
+
+            <div class="form-group">
+              <label for="shipyard">Shipyard</label>
+              <input type="text" name="shipyard" id="shipyard" class="form-control" />
+            </div>
+
+            <div class="form-group mt-3">
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+          </form>
+        </section>
+      </xpath>
+    </template>
+
+    <template id="portal_my_home_menu_inherit" inherit_id="portal.portal_my_home">
+      <xpath expr="//div[@class='o_portal_my_home']" position="inside">
+        <h3>
+          <a href="/my/ships">My Ships</a>
+        </h3>
+      </xpath>
+    </template>
+
+  </data>
+</odoo>

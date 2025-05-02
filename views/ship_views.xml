@@ -1,0 +1,315 @@
+<odoo>
+  <data>
+    <!-- Action -->
+    <record id="action_ship" model="ir.actions.act_window">
+      <field name="name">Ships</field>
+      <field name="res_model">ship.ship</field>
+      <field name="view_mode">kanban,tree,form</field>
+    </record>
+
+    <record id="action_ship_process" model="ir.actions.act_window">
+      <field name="name">Ship Processes</field>
+      <field name="res_model">ship.process</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="action_ship_process_status" model="ir.actions.act_window">
+      <field name="name">Process Statuses</field>
+      <field name="res_model">ship.process.status</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="action_ship_process_logs" model="ir.actions.act_window">
+      <field name="name">Ship Process Statuses</field>
+      <field name="res_model">ship.ship_process</field>
+      <field name="view_mode">kanban,tree,form</field>
+    </record>
+
+    <!-- Menu -->
+    <menuitem id="menu_ship_root" name="Ship Management" sequence="10" />
+    <menuitem id="menu_ship_main" name="Ships" parent="menu_ship_root" action="action_ship"
+      sequence="10" />
+    <menuitem id="menu_ship_settings" name="Settings" parent="menu_ship_root" />
+    <menuitem id="menu_ship_process" name="Processes" parent="menu_ship_settings"
+      action="action_ship_process" sequence="20" />
+    <menuitem id="menu_ship_process_status" name="Process Statuses" parent="menu_ship_settings"
+      action="action_ship_process_status" sequence="30" />
+
+    <!-- Tree View -->
+    <record id="view_ship_tree" model="ir.ui.view">
+      <field name="name">ship.ship.tree</field>
+      <field name="model">ship.ship</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name" />
+          <field name="imo_number" />
+          <field name="ship_type" />
+          <field name="class_society" />
+          <field name="home_port" />
+          <field name="build_year" />
+          <field name="status" />
+        </tree>
+      </field>
+    </record>
+
+    <record id="view_ship_process_tree" model="ir.ui.view">
+      <field name="name">ship.ship_process.tree</field>
+      <field name="model">ship.ship_process</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="ship_id" />
+          <field name="process_id" />
+          <field name="status_id" />
+          <field name="date_started" />
+          <field name="date_completed" />
+          <field name="preparer_id" />
+          <field name="reviewer_id" />
+          <field name="approver_id" />
+        </tree>
+      </field>
+    </record>
+
+    <!-- Form View -->
+    <record id="view_ship_form" model="ir.ui.view">
+      <field name="name">ship.ship.form</field>
+      <field name="model">ship.ship</field>
+      <field name="arch" type="xml">
+        <form>
+          <!-- Header: status and avatar -->
+          <header>
+            <field name="status" widget="statusbar" options="{'clickable': '1'}" />
+          </header>
+
+          <sheet>
+            <div class="oe_button_box" name="button_box">
+              <button name="action_ship_process_logs" type="object"
+                class="oe_stat_button" icon="fa-ship">
+                <div class="o_stat_info">
+                  <field name="process_log_count" class="o_stat_value" />
+                  <span class="o_stat_text"> Processes</span>
+                </div>
+              </button>
+            </div>
+
+            <!-- Title and image side-by-side -->
+            <div class="o_row">
+              <div class="o_col o_col_auto">
+                <div class="oe_title">
+                  <h1>
+                    <field name="name" placeholder="e.g. MV Ship Name" />
+                  </h1>
+                </div>
+              </div>
+              <div class="o_col">
+                <field name="image_128" widget="image" class="oe_avatar"
+                  options="{'preview_image': 'image_128'}" />
+              </div>
+            </div>
+            <div>
+              <group col="2">
+                <group>
+                  <field name="imo_number" />
+                  <field name="ship_type" />
+                  <field name="class_society" />
+                  <field name="home_port" />
+                  <field name="shipyard" />
+                </group>
+                <group>
+                  <field name="flag" />
+                  <field name="build_year" />
+                  <field name="owner_id" />
+                  <field name="operator_id" />
+                  <field name="process_log_count" />
+                </group>
+              </group>
+            </div>
+
+            <!-- Tabs -->
+            <notebook>
+              <page string="Dimensions">
+                <group col="2">
+                  <group>
+                    <field name="gross_tonnage" />
+                    <field name="deadweight" />
+                    <field name="length_overall" />
+                  </group>
+                  <group>
+                    <field name="beam" />
+                    <field name="draft" />
+                  </group>
+                </group>
+              </page>
+              <page string="Lifecycle Process Logs">
+                <!-- <field name="process_log_ids" mode="tree,form"> -->
+                <field name="process_log_ids"
+                  context="{'form_view_ref': 'view_ship_process_form', 'target': 'current'}"
+                  mode="tree,form">
+                  <tree>
+                    <field name="process_id" />
+                    <field name="status_id" />
+                    <field name="date_started" />
+                    <field name="date_completed" />
+                    <field name="approver_id" />
+                  </tree>
+                </field>
+              </page>
+              <page string="Notes">
+                <field name="note" placeholder="Add any remarks about this ship..." />
+              </page>
+            </notebook>
+            <div class="oe_chatter">
+              <field name="message_follower_ids" />
+              <field name="activity_ids" />
+              <field name="message_ids" />
+            </div>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <record id="view_ship_process_form" model="ir.ui.view">
+      <field name="name">ship.ship_process.form</field>
+      <field name="model">ship.ship_process</field>
+      <field name="arch" type="xml">
+        <form string="Process Log">
+          <sheet>
+            <group>
+              <field name="ship_id" />
+              <field name="process_id" />
+              <field name="status_id" />
+            </group>
+            <group col="2">
+              <field name="date_started" />
+              <field name="date_completed" />
+            </group>
+            <notebook>
+              <page string="Personnel">
+                <group>
+                  <group>
+                    <field name="preparer_id" />
+                    <field name="reviewer_id" />
+                    <field name="approver_id" />
+                  </group>
+                  <group>
+                    <field name="documents_submitted" />
+                    <field name="notes" />
+                  </group>
+                </group>
+              </page>
+            </notebook>
+            <div class="oe_chatter">
+              <field name="message_follower_ids" />
+              <field name="activity_ids" />
+              <field name="message_ids" />
+            </div>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <!-- Kanban View -->
+    <record id="view_ship_kanban" model="ir.ui.view">
+      <field name="name">ship.ship.kanban</field>
+      <field name="model">ship.ship</field>
+      <field name="arch" type="xml">
+        <kanban class="o_kanban_small_column" default_group_by="status">
+          <field name="name" />
+          <field name="imo_number" />
+          <field name="ship_type" />
+          <field name="class_society" />
+          <!-- <field name="flag" /> -->
+          <!-- <field name="status" /> -->
+          <field name="id" />
+          <field name="image_128" />
+          <templates>
+            <t t-name="kanban-box">
+              <div class="oe_kanban_global_click o_kanban_record">
+                <div class="o_kanban_image">
+                  <img t-att-src="kanban_image('ship.ship', 'image_128', record.id.raw_value)"
+                    alt="Ship image" />
+                </div>
+                <div class="o_kanban_details">
+                  <strong>
+                    <field name="name" />
+                  </strong>
+                  <div>
+                    <i class="fa fa-ship" />
+                    <field name="imo_number" />
+                  </div>
+                  <div>
+                    <b>Type:</b>
+                    <field name="ship_type" />
+                  </div>
+                  <div>
+                    <b>Class:</b>
+                    <field name="class_society" />
+                  </div>
+                  <div>
+                    <b>Port:</b>
+                    <field name="home_port" />
+                  </div>
+                  <div>
+                    <b>Year:</b>
+                    <field name="build_year" />
+                  </div>
+                  <!-- <div>
+                    <b>Status:</b>
+                    <field name="status" />
+                  </div> -->
+                </div>
+              </div>
+            </t>
+          </templates>
+        </kanban>
+      </field>
+    </record>
+
+    <record id="view_ship_process_kanban" model="ir.ui.view">
+      <field name="name">ship.ship_process.kanban</field>
+      <field name="model">ship.ship_process</field>
+      <field name="arch" type="xml">
+        <kanban class="o_kanban_small_column" default_group_by="status_id">
+          <field name="ship_id" />
+          <field name="process_id" />
+          <field name="status_id" />
+          <field name="date_started" />
+          <field name="date_completed" />
+          <field name="approver_id" />
+
+          <templates>
+            <t t-name="kanban-box">
+              <div class="oe_kanban_global_click o_kanban_record">
+                <div class="o_kanban_details">
+                  <strong>
+                    <field name="process_id" />
+                  </strong>
+                  <div>
+                    <b>Ship:</b>
+                    <field name="ship_id" />
+                  </div>
+                  <div>
+                    <b>Status:</b>
+                    <field name="status_id" />
+                  </div>
+                  <div>
+                    <b>Started:</b>
+                    <field name="date_started" />
+                  </div>
+                  <div>
+                    <b>Completed:</b>
+                    <field name="date_completed" />
+                  </div>
+                  <div>
+                    <b>Approver:</b>
+                    <field name="approver_id" />
+                  </div>
+                </div>
+              </div>
+            </t>
+          </templates>
+        </kanban>
+      </field>
+    </record>
+
+  </data>
+</odoo>

@@ -1,0 +1,616 @@
+<odoo>
+  <data noupdate="1">
+    <record id="demo_owner_partner_1" model="res.partner">
+      <field name="name">Global Ship Owners Inc.</field>
+      <field name="email">info@globalships.com</field>
+    </record>
+
+    <record id="demo_operator_partner_1" model="res.partner">
+      <field name="name">Oceanic Vessel Operators</field>
+      <field name="email">contact@oceanicvessels.com</field>
+    </record>
+  </data>
+  <data noupdate="1">
+
+    <record id="ship_demo_01" model="ship.ship">
+      <field name="name">MV Horizon Star</field>
+      <field name="imo_number">9876543</field>
+      <field name="ship_type">cargo</field>
+      <field name="flag">Panama</field>
+      <field name="status">active</field>
+      <field name="owner_id" ref="slms.demo_owner_partner_1" />
+      <field name="operator_id" ref="slms.demo_operator_partner_1" />
+      <field name="build_year">2010</field>
+      <field name="shipyard">Hyundai Heavy Industries</field>
+      <field name="gross_tonnage">50000</field>
+      <field name="deadweight">65000</field>
+      <field name="length_overall">230</field>
+      <field name="beam">32</field>
+      <field name="draft">10.5</field>
+      <field name="note">Main route: Asia to Europe</field>
+      <field name="image_128" type="base64" file="slms/static/img/image_01.jpeg" />
+    </record>
+
+    <record id="ship_demo_02" model="ship.ship">
+      <field name="name">SS Pacific Dream</field>
+      <field name="imo_number">1234567</field>
+      <field name="ship_type">passenger</field>
+      <field name="flag">Bahamas</field>
+      <field name="status">maintenance</field>
+      <field name="owner_id" ref="slms.demo_owner_partner_1" />
+      <field name="operator_id" ref="slms.demo_operator_partner_1" />
+      <field name="build_year">2005</field>
+      <field name="shipyard">Meyer Werft</field>
+      <field name="gross_tonnage">75000</field>
+      <field name="deadweight">15000</field>
+      <field name="length_overall">294</field>
+      <field name="beam">35</field>
+      <field name="draft">8.2</field>
+      <field name="note">Currently dry-docked in Singapore</field>
+      <field name="image_128" type="base64" file="slms/static/img/image_02.jpeg" />
+    </record>
+
+    <record id="ship_demo_03" model="ship.ship">
+      <field name="name">MS Atlantic Tide</field>
+      <field name="imo_number">1029384</field>
+      <field name="ship_type">container</field>
+      <field name="flag">Liberia</field>
+      <field name="status">active</field>
+      <field name="owner_id" ref="slms.demo_owner_partner_1" />
+      <field name="operator_id" ref="slms.demo_operator_partner_1" />
+      <field name="build_year">2015</field>
+      <field name="shipyard">Samsung Shipbuilding</field>
+      <field name="gross_tonnage">65000</field>
+      <field name="deadweight">80000</field>
+      <field name="length_overall">300</field>
+      <field name="beam">40</field>
+      <field name="draft">12.0</field>
+      <field name="note">Transatlantic route</field>
+      <field name="image_128" type="base64" file="slms/static/img/image_03.jpeg" />
+    </record>
+
+    <record id="ship_demo_04" model="ship.ship">
+      <field name="name">MV Sea Venture</field>
+      <field name="imo_number">2938475</field>
+      <field name="ship_type">tanker</field>
+      <field name="flag">Marshall Islands</field>
+      <field name="status">active</field>
+      <field name="owner_id" ref="slms.demo_owner_partner_1" />
+      <field name="operator_id" ref="slms.demo_operator_partner_1" />
+      <field name="build_year">2012</field>
+      <field name="gross_tonnage">70000</field>
+      <field name="deadweight">95000</field>
+      <field name="length_overall">260</field>
+      <field name="beam">38</field>
+      <field name="draft">11.2</field>
+      <field name="image_128" type="base64" file="slms/static/img/image_04.jpeg" />
+    </record>
+
+    <record id="ship_demo_05" model="ship.ship">
+      <field name="name">FS Triton</field>
+      <field name="imo_number">3847561</field>
+      <field name="ship_type">naval</field>
+      <field name="flag">USA</field>
+      <field name="owner_id" ref="slms.demo_owner_partner_1" />
+      <field name="operator_id" ref="slms.demo_operator_partner_1" />
+      <field name="status">design</field>
+      <field name="build_year">2024</field>
+      <field name="shipyard">General Dynamics</field>
+      <field name="length_overall">150</field>
+      <field name="beam">20</field>
+      <field name="draft">7.5</field>
+      <field name="image_128" type="base64" file="slms/static/img/image_05.jpeg" />
+    </record>
+
+    <record id="ship_demo_06" model="ship.ship">
+      <field name="name">MV Coral Queen</field>
+      <field name="imo_number">4758693</field>
+      <field name="ship_type">fishing</field>
+      <field name="flag">Philippines</field>
+      <field name="status">active</field>
+      <field name="owner_id" ref="slms.demo_owner_partner_1" />
+      <field name="operator_id" ref="slms.demo_operator_partner_1" />
+      <field name="build_year">2018</field>
+      <field name="shipyard">Keppel Subic</field>
+      <field name="length_overall">90</field>
+      <field name="beam">15</field>
+      <field name="draft">4.0</field>
+      <field name="image_128" type="base64" file="slms/static/img/image_06.jpeg" />
+    </record>
+
+    <record id="ship_demo_07" model="ship.ship">
+      <field name="name">MV Eastern Glow</field>
+      <field name="imo_number">5647382</field>
+      <field name="ship_type">cargo</field>
+      <field name="flag">Singapore</field>
+      <field name="status">active</field>
+      <field name="owner_id" ref="slms.demo_owner_partner_1" />
+      <field name="operator_id" ref="slms.demo_operator_partner_1" />
+      <field name="build_year">2016</field>
+      <field name="shipyard">ST Marine</field>
+      <field name="length_overall">210</field>
+      <field name="beam">30</field>
+      <field name="draft">9.2</field>
+      <field name="image_128" type="base64" file="slms/static/img/image_07.jpeg" />
+    </record>
+
+    <record id="ship_demo_08" model="ship.ship">
+      <field name="name">MV Western Runner</field>
+      <field name="imo_number">1928374</field>
+      <field name="ship_type">cargo</field>
+      <field name="owner_id" ref="slms.demo_owner_partner_1" />
+      <field name="operator_id" ref="slms.demo_operator_partner_1" />
+      <field name="flag">Greece</field>
+      <field name="status">building</field>
+      <field name="build_year">2025</field>
+      <field name="shipyard">Daewoo Shipbuilding</field>
+      <field name="image_128" type="base64" file="slms/static/img/image_08.jpeg" />
+    </record>
+
+    <record id="ship_demo_09" model="ship.ship">
+      <field name="name">MS Blue Horizon</field>
+      <field name="imo_number">5647389</field>
+      <field name="ship_type">passenger</field>
+      <field name="flag">Malta</field>
+      <field name="owner_id" ref="slms.demo_owner_partner_1" />
+      <field name="operator_id" ref="slms.demo_operator_partner_1" />
+      <field name="status">decommissioned</field>
+      <field name="build_year">1998</field>
+      <field name="length_overall">220</field>
+      <field name="beam">28</field>
+      <field name="image_128" type="base64" file="slms/static/img/image_09.jpeg" />
+    </record>
+
+    <record id="ship_demo_10" model="ship.ship">
+      <field name="name">MV Arctic Shield</field>
+      <field name="imo_number">9182736</field>
+      <field name="ship_type">other</field>
+      <field name="flag">Norway</field>
+      <field name="status">active</field>
+      <field name="owner_id" ref="slms.demo_owner_partner_1" />
+      <field name="operator_id" ref="slms.demo_operator_partner_1" />
+      <field name="build_year">2020</field>
+      <field name="gross_tonnage">30000</field>
+      <field name="deadweight">40000</field>
+      <field name="length_overall">180</field>
+      <field name="beam">25</field>
+      <field name="draft">8.0</field>
+      <field name="image_128" type="base64" file="slms/static/img/image_10.jpeg" />
+    </record>
+  </data>
+
+  <data noupdate="1">
+
+    <record id="process_design_review" model="ship.process">
+      <field name="name">Ship Design Review</field>
+      <field name="description">
+        Prepared by Ship Owner, reviewed by Class Society, and approved by MARINA. Includes
+        submission of design documents such as general arrangement plans, structural plans,
+        hydrostatic curves, and stability calculations.
+      </field>
+    </record>
+
+    <record id="process_equipment_verification" model="ship.process">
+      <field name="name">Equipment and Material Verification</field>
+      <field name="description">
+        Involves verification of machinery, electrical systems, safety equipment, and material
+        specifications. Reviewed by Class Society and approved by MARINA.
+      </field>
+    </record>
+
+    <record id="process_ship_monitoring" model="ship.process">
+      <field name="name">Shipbuilding and/or Ship Repair Monitoring</field>
+      <field name="description">
+        Covers inspection of shipyard activities, construction and repair documentation, project
+        schedules, and shipyard certifications. Supervised by Class Society and approved by MARINA.
+      </field>
+    </record>
+
+    <record id="process_class_assignment" model="ship.process">
+      <field name="name">Assignment and/or Renewal of Class</field>
+      <field name="description">
+        Classification by Class Society including surveys, class records, damage reports, and
+        approved plans. Required for MARINA certificate issuance and vessel operation.
+      </field>
+    </record>
+
+    <record id="process_certificate_issuance" model="ship.process">
+      <field name="name">Certificate Issuance</field>
+      <field name="description">
+        MARINA issues official vessel certificates including registry, ownership, safety, and
+        tonnage documents after review and endorsement by Class Society.
+      </field>
+    </record>
+
+    <record id="process_maintenance" model="ship.process">
+      <field name="name">Maintenance, Inspection, and/or Surveys</field>
+      <field name="description">
+        Continuous monitoring of machinery, safety, and environmental compliance. Includes class
+        surveys, PCG and PPA inspections, oil record books, and planned maintenance system logs.
+      </field>
+    </record>
+
+    <record id="process_recycling" model="ship.process">
+      <field name="name">Ship Recycling Compliance</field>
+      <field name="description">
+        Documentation for end-of-life recycling including Inventory of Hazardous Materials, Green
+        Passport, HazMat surveys, and Ship Recycling Plans. Complies with MARINA and international
+        standards.
+      </field>
+    </record>
+
+  </data>
+
+  <data noupdate="1">
+
+    <record id="status_pending" model="ship.process.status">
+      <field name="name">Pending</field>
+      <field name="description">Process is defined but not yet started.</field>
+      <field name="sequence">10</field>
+    </record>
+
+    <record id="status_in_progress" model="ship.process.status">
+      <field name="name">In Progress</field>
+      <field name="description">Process is currently being worked on or reviewed.</field>
+      <field name="sequence">20</field>
+    </record>
+
+    <record id="status_reviewed" model="ship.process.status">
+      <field name="name">Reviewed</field>
+      <field name="description">Process has been reviewed by Class Society or relevant agency.</field>
+      <field name="sequence">30</field>
+    </record>
+
+    <record id="status_approved" model="ship.process.status">
+      <field name="name">Approved</field>
+      <field name="description">Process has received final approval (e.g., by MARINA).</field>
+      <field name="sequence">40</field>
+    </record>
+
+    <record id="status_rejected" model="ship.process.status">
+      <field name="name">Rejected</field>
+      <field name="description">Process was reviewed but not approved and requires revision.</field>
+      <field name="sequence">50</field>
+    </record>
+
+    <record id="status_completed" model="ship.process.status">
+      <field name="name">Completed</field>
+      <field name="description">All steps in the process are finished and no further action is
+        required.</field>
+      <field name="sequence">60</field>
+    </record>
+
+  </data>
+  <data noupdate="1">
+    <record id="log_ship_demo_01_1" model="ship.ship_process">
+      <field name="ship_id" ref="ship_demo_01" />
+      <field name="process_id" ref="process_equipment_verification" />
+      <field name="status_id" ref="status_in_progress" />
+      <field name="date_started">2023-02-12</field>
+      <field name="date_completed">2023-02-24</field>
+      <field name="preparer_id" ref="slms.demo_owner_partner_1" />
+      <field name="reviewer_id" ref="slms.demo_operator_partner_1" />
+      <field name="approver_id" ref="slms.demo_operator_partner_1" />
+      <field name="notes">Demo log 1 for ship_demo_01</field>
+    </record>
+    <record id="log_ship_demo_01_2" model="ship.ship_process">
+      <field name="ship_id" ref="ship_demo_01" />
+      <field name="process_id" ref="process_recycling" />
+      <field name="status_id" ref="status_completed" />
+      <field name="date_started">2023-01-18</field>
+      <field name="date_completed">2023-01-31</field>
+      <field name="preparer_id" ref="slms.demo_owner_partner_1" />
+      <field name="reviewer_id" ref="slms.demo_operator_partner_1" />
+      <field name="approver_id" ref="slms.demo_operator_partner_1" />
+      <field name="notes">Demo log 2 for ship_demo_01</field>
+    </record>
+    <record id="log_ship_demo_01_3" model="ship.ship_process">
+      <field name="ship_id" ref="ship_demo_01" />
+      <field name="process_id" ref="process_design_review" />
+      <field name="status_id" ref="status_reviewed" />
+      <field name="date_started">2023-01-20</field>
+      <field name="date_completed">2023-02-08</field>
+      <field name="preparer_id" ref="slms.demo_owner_partner_1" />
+      <field name="reviewer_id" ref="slms.demo_operator_partner_1" />
+      <field name="approver_id" ref="slms.demo_operator_partner_1" />
+      <field name="notes">Demo log 3 for ship_demo_01</field>
+    </record>
+    <record id="log_ship_demo_02_4" model="ship.ship_process">
+      <field name="ship_id" ref="ship_demo_02" />
+      <field name="process_id" ref="process_design_review" />
+      <field name="status_id" ref="status_approved" />
+      <field name="date_started">2023-03-14</field>
+      <field name="date_completed">2023-04-05</field>
+      <field name="preparer_id" ref="slms.demo_owner_partner_1" />
+      <field name="reviewer_id" ref="slms.demo_operator_partner_1" />
+      <field name="approver_id" ref="slms.demo_operator_partner_1" />
+      <field name="notes">Demo log 4 for ship_demo_02</field>
+    </record>
+    <record id="log_ship_demo_02_5" model="ship.ship_process">
+      <field name="ship_id" ref="ship_demo_02" />
+      <field name="process_id" ref="process_ship_monitoring" />
+      <field name="status_id" ref="status_rejected" />
+      <field name="date_started">2023-04-08</field>
+      <field name="date_completed">2023-04-15</field>
+      <field name="preparer_id" ref="slms.demo_owner_partner_1" />
+      <field name="reviewer_id" ref="slms.demo_operator_partner_1" />
+      <field name="approver_id" ref="slms.demo_operator_partner_1" />
+      <field name="notes">Demo log 5 for ship_demo_02</field>
+    </record>
+    <record id="log_ship_demo_02_6" model="ship.ship_process">
+      <field name="ship_id" ref="ship_demo_02" />
+      <field name="process_id" ref="process_maintenance" />
+      <field name="status_id" ref="status_in_progress" />
+      <field name="date_started">2023-04-08</field>
+      <field name="date_completed">2023-04-15</field>
+      <field name="preparer_id" ref="slms.demo_owner_partner_1" />
+      <field name="reviewer_id" ref="slms.demo_operator_partner_1" />
+      <field name="approver_id" ref="slms.demo_operator_partner_1" />
+      <field name="notes">Demo log 6 for ship_demo_02</field>
+    </record>
+    <record id="log_ship_demo_03_7" model="ship.ship_process">
+      <field name="ship_id" ref="ship_demo_03" />
+      <field name="process_id" ref="process_class_assignment" />
+      <field name="status_id" ref="status_approved" />
+      <field name="date_started">2023-02-10</field>
+      <field name="date_completed">2023-02-16</field>
+      <field name="preparer_id" ref="slms.demo_owner_partner_1" />
+      <field name="reviewer_id" ref="slms.demo_operator_partner_1" />
+      <field name="approver_id" ref="slms.demo_operator_partner_1" />
+      <field name="notes">Demo log 7 for ship_demo_03</field>
+    </record>
+    <record id="log_ship_demo_03_8" model="ship.ship_process">
+      <field name="ship_id" ref="ship_demo_03" />
+      <field name="process_id" ref="process_recycling" />
+      <field name="status_id" ref="status_rejected" />
+      <field name="date_started">2023-01-10</field>
+      <field name="date_completed">2023-01-28</field>
+      <field name="preparer_id" ref="slms.demo_owner_partner_1" />
+      <field name="reviewer_id" ref="slms.demo_operator_partner_1" />
+      <field name="approver_id" ref="slms.demo_operator_partner_1" />
+      <field name="notes">Demo log 8 for ship_demo_03</field>
+    </record>
+    <record id="log_ship_demo_03_9" model="ship.ship_process">
+      <field name="ship_id" ref="ship_demo_03" />
+      <field name="process_id" ref="process_ship_monitoring" />
+      <field name="status_id" ref="status_rejected" />
+      <field name="date_started">2023-03-19</field>
+      <field name="date_completed">2023-04-01</field>
+      <field name="preparer_id" ref="slms.demo_owner_partner_1" />
+      <field name="reviewer_id" ref="slms.demo_operator_partner_1" />
+      <field name="approver_id" ref="slms.demo_operator_partner_1" />
+      <field name="notes">Demo log 9 for ship_demo_03</field>
+    </record>
+    <record id="log_ship_demo_04_10" model="ship.ship_process">
+      <field name="ship_id" ref="ship_demo_04" />
+      <field name="process_id" ref="process_recycling" />
+      <field name="status_id" ref="status_reviewed" />
+      <field name="date_started">2023-02-18</field>
+      <field name="date_completed">2023-03-05</field>
+      <field name="preparer_id" ref="slms.demo_owner_partner_1" />
+      <field name="reviewer_id" ref="slms.demo_operator_partner_1" />
+      <field name="approver_id" ref="slms.demo_operator_partner_1" />
+      <field name="notes">Demo log 10 for ship_demo_04</field>
+    </record>
+    <record id="log_ship_demo_04_11" model="ship.ship_process">
+      <field name="ship_id" ref="ship_demo_04" />
+      <field name="process_id" ref="process_maintenance" />
+      <field name="status_id" ref="status_in_progress" />
+      <field name="date_started">2023-01-26</field>
+      <field name="date_completed">2023-02-11</field>
+      <field name="preparer_id" ref="slms.demo_owner_partner_1" />
+      <field name="reviewer_id" ref="slms.demo_operator_partner_1" />
+      <field name="approver_id" ref="slms.demo_operator_partner_1" />
+      <field name="notes">Demo log 11 for ship_demo_04</field>
+    </record>
+    <record id="log_ship_demo_04_12" model="ship.ship_process">
+      <field name="ship_id" ref="ship_demo_04" />
+      <field name="process_id" ref="process_design_review" />
+      <field name="status_id" ref="status_in_progress" />
+      <field name="date_started">2023-02-19</field>
+      <field name="date_completed">2023-02-28</field>
+      <field name="preparer_id" ref="slms.demo_owner_partner_1" />
+      <field name="reviewer_id" ref="slms.demo_operator_partner_1" />
+      <field name="approver_id" ref="slms.demo_operator_partner_1" />
+      <field name="notes">Demo log 12 for ship_demo_04</field>
+    </record>
+    <record id="log_ship_demo_05_13" model="ship.ship_process">
+      <field name="ship_id" ref="ship_demo_05" />
+      <field name="process_id" ref="process_ship_monitoring" />
+      <field name="status_id" ref="status_pending" />
+      <field name="date_started">2023-04-11</field>
+      <field name="date_completed">2023-05-07</field>
+      <field name="preparer_id" ref="slms.demo_owner_partner_1" />
+      <field name="reviewer_id" ref="slms.demo_operator_partner_1" />
+      <field name="approver_id" ref="slms.demo_operator_partner_1" />
+      <field name="notes">Demo log 13 for ship_demo_05</field>
+    </record>
+    <record id="log_ship_demo_05_14" model="ship.ship_process">
+      <field name="ship_id" ref="ship_demo_05" />
+      <field name="process_id" ref="process_recycling" />
+      <field name="status_id" ref="status_pending" />
+      <field name="date_started">2023-01-15</field>
+      <field name="date_completed">2023-01-24</field>
+      <field name="preparer_id" ref="slms.demo_owner_partner_1" />
+      <field name="reviewer_id" ref="slms.demo_operator_partner_1" />
+      <field name="approver_id" ref="slms.demo_operator_partner_1" />
+      <field name="notes">Demo log 14 for ship_demo_05</field>
+    </record>
+    <record id="log_ship_demo_05_15" model="ship.ship_process">
+      <field name="ship_id" ref="ship_demo_05" />
+      <field name="process_id" ref="process_certificate_issuance" />
+      <field name="status_id" ref="status_in_progress" />
+      <field name="date_started">2023-03-14</field>
+      <field name="date_completed">2023-03-24</field>
+      <field name="preparer_id" ref="slms.demo_owner_partner_1" />
+      <field name="reviewer_id" ref="slms.demo_operator_partner_1" />
+      <field name="approver_id" ref="slms.demo_operator_partner_1" />
+      <field name="notes">Demo log 15 for ship_demo_05</field>
+    </record>
+    <record id="log_ship_demo_06_16" model="ship.ship_process">
+      <field name="ship_id" ref="ship_demo_06" />
+      <field name="process_id" ref="process_certificate_issuance" />
+      <field name="status_id" ref="status_pending" />
+      <field name="date_started">2023-04-04</field>
+      <field name="date_completed">2023-04-25</field>
+      <field name="preparer_id" ref="slms.demo_owner_partner_1" />
+      <field name="reviewer_id" ref="slms.demo_operator_partner_1" />
+      <field name="approver_id" ref="slms.demo_operator_partner_1" />
+      <field name="notes">Demo log 16 for ship_demo_06</field>
+    </record>
+    <record id="log_ship_demo_06_17" model="ship.ship_process">
+      <field name="ship_id" ref="ship_demo_06" />
+      <field name="process_id" ref="process_ship_monitoring" />
+      <field name="status_id" ref="status_approved" />
+      <field name="date_started">2023-02-07</field>
+      <field name="date_completed">2023-02-24</field>
+      <field name="preparer_id" ref="slms.demo_owner_partner_1" />
+      <field name="reviewer_id" ref="slms.demo_operator_partner_1" />
+      <field name="approver_id" ref="slms.demo_operator_partner_1" />
+      <field name="notes">Demo log 17 for ship_demo_06</field>
+    </record>
+    <record id="log_ship_demo_06_18" model="ship.ship_process">
+      <field name="ship_id" ref="ship_demo_06" />
+      <field name="process_id" ref="process_class_assignment" />
+      <field name="status_id" ref="status_pending" />
+      <field name="date_started">2023-02-17</field>
+      <field name="date_completed">2023-03-08</field>
+      <field name="preparer_id" ref="slms.demo_owner_partner_1" />
+      <field name="reviewer_id" ref="slms.demo_operator_partner_1" />
+      <field name="approver_id" ref="slms.demo_operator_partner_1" />
+      <field name="notes">Demo log 18 for ship_demo_06</field>
+    </record>
+    <record id="log_ship_demo_07_19" model="ship.ship_process">
+      <field name="ship_id" ref="ship_demo_07" />
+      <field name="process_id" ref="process_class_assignment" />
+      <field name="status_id" ref="status_pending" />
+      <field name="date_started">2023-02-20</field>
+      <field name="date_completed">2023-03-17</field>
+      <field name="preparer_id" ref="slms.demo_owner_partner_1" />
+      <field name="reviewer_id" ref="slms.demo_operator_partner_1" />
+      <field name="approver_id" ref="slms.demo_operator_partner_1" />
+      <field name="notes">Demo log 19 for ship_demo_07</field>
+    </record>
+    <record id="log_ship_demo_07_20" model="ship.ship_process">
+      <field name="ship_id" ref="ship_demo_07" />
+      <field name="process_id" ref="process_maintenance" />
+      <field name="status_id" ref="status_completed" />
+      <field name="date_started">2023-03-20</field>
+      <field name="date_completed">2023-04-09</field>
+      <field name="preparer_id" ref="slms.demo_owner_partner_1" />
+      <field name="reviewer_id" ref="slms.demo_operator_partner_1" />
+      <field name="approver_id" ref="slms.demo_operator_partner_1" />
+      <field name="notes">Demo log 20 for ship_demo_07</field>
+    </record>
+    <record id="log_ship_demo_07_21" model="ship.ship_process">
+      <field name="ship_id" ref="ship_demo_07" />
+      <field name="process_id" ref="process_certificate_issuance" />
+      <field name="status_id" ref="status_approved" />
+      <field name="date_started">2023-03-31</field>
+      <field name="date_completed">2023-04-26</field>
+      <field name="preparer_id" ref="slms.demo_owner_partner_1" />
+      <field name="reviewer_id" ref="slms.demo_operator_partner_1" />
+      <field name="approver_id" ref="slms.demo_operator_partner_1" />
+      <field name="notes">Demo log 21 for ship_demo_07</field>
+    </record>
+    <record id="log_ship_demo_08_22" model="ship.ship_process">
+      <field name="ship_id" ref="ship_demo_08" />
+      <field name="process_id" ref="process_class_assignment" />
+      <field name="status_id" ref="status_completed" />
+      <field name="date_started">2023-03-31</field>
+      <field name="date_completed">2023-04-21</field>
+      <field name="preparer_id" ref="slms.demo_owner_partner_1" />
+      <field name="reviewer_id" ref="slms.demo_operator_partner_1" />
+      <field name="approver_id" ref="slms.demo_operator_partner_1" />
+      <field name="notes">Demo log 22 for ship_demo_08</field>
+    </record>
+    <record id="log_ship_demo_08_23" model="ship.ship_process">
+      <field name="ship_id" ref="ship_demo_08" />
+      <field name="process_id" ref="process_ship_monitoring" />
+      <field name="status_id" ref="status_completed" />
+      <field name="date_started">2023-01-24</field>
+      <field name="date_completed">2023-02-23</field>
+      <field name="preparer_id" ref="slms.demo_owner_partner_1" />
+      <field name="reviewer_id" ref="slms.demo_operator_partner_1" />
+      <field name="approver_id" ref="slms.demo_operator_partner_1" />
+      <field name="notes">Demo log 23 for ship_demo_08</field>
+    </record>
+    <record id="log_ship_demo_08_24" model="ship.ship_process">
+      <field name="ship_id" ref="ship_demo_08" />
+      <field name="process_id" ref="process_certificate_issuance" />
+      <field name="status_id" ref="status_pending" />
+      <field name="date_started">2023-03-09</field>
+      <field name="date_completed">2023-03-28</field>
+      <field name="preparer_id" ref="slms.demo_owner_partner_1" />
+      <field name="reviewer_id" ref="slms.demo_operator_partner_1" />
+      <field name="approver_id" ref="slms.demo_operator_partner_1" />
+      <field name="notes">Demo log 24 for ship_demo_08</field>
+    </record>
+    <record id="log_ship_demo_09_25" model="ship.ship_process">
+      <field name="ship_id" ref="ship_demo_09" />
+      <field name="process_id" ref="process_design_review" />
+      <field name="status_id" ref="status_in_progress" />
+      <field name="date_started">2023-03-30</field>
+      <field name="date_completed">2023-04-05</field>
+      <field name="preparer_id" ref="slms.demo_owner_partner_1" />
+      <field name="reviewer_id" ref="slms.demo_operator_partner_1" />
+      <field name="approver_id" ref="slms.demo_operator_partner_1" />
+      <field name="notes">Demo log 25 for ship_demo_09</field>
+    </record>
+    <record id="log_ship_demo_09_26" model="ship.ship_process">
+      <field name="ship_id" ref="ship_demo_09" />
+      <field name="process_id" ref="process_maintenance" />
+      <field name="status_id" ref="status_pending" />
+      <field name="date_started">2023-03-05</field>
+      <field name="date_completed">2023-04-02</field>
+      <field name="preparer_id" ref="slms.demo_owner_partner_1" />
+      <field name="reviewer_id" ref="slms.demo_operator_partner_1" />
+      <field name="approver_id" ref="slms.demo_operator_partner_1" />
+      <field name="notes">Demo log 26 for ship_demo_09</field>
+    </record>
+    <record id="log_ship_demo_09_27" model="ship.ship_process">
+      <field name="ship_id" ref="ship_demo_09" />
+      <field name="process_id" ref="process_equipment_verification" />
+      <field name="status_id" ref="status_approved" />
+      <field name="date_started">2023-02-24</field>
+      <field name="date_completed">2023-03-19</field>
+      <field name="preparer_id" ref="slms.demo_owner_partner_1" />
+      <field name="reviewer_id" ref="slms.demo_operator_partner_1" />
+      <field name="approver_id" ref="slms.demo_operator_partner_1" />
+      <field name="notes">Demo log 27 for ship_demo_09</field>
+    </record>
+    <record id="log_ship_demo_10_28" model="ship.ship_process">
+      <field name="ship_id" ref="ship_demo_10" />
+      <field name="process_id" ref="process_equipment_verification" />
+      <field name="status_id" ref="status_approved" />
+      <field name="date_started">2023-01-17</field>
+      <field name="date_completed">2023-02-07</field>
+      <field name="preparer_id" ref="slms.demo_owner_partner_1" />
+      <field name="reviewer_id" ref="slms.demo_operator_partner_1" />
+      <field name="approver_id" ref="slms.demo_operator_partner_1" />
+      <field name="notes">Demo log 28 for ship_demo_10</field>
+    </record>
+    <record id="log_ship_demo_10_29" model="ship.ship_process">
+      <field name="ship_id" ref="ship_demo_10" />
+      <field name="process_id" ref="process_certificate_issuance" />
+      <field name="status_id" ref="status_completed" />
+      <field name="date_started">2023-01-13</field>
+      <field name="date_completed">2023-02-05</field>
+      <field name="preparer_id" ref="slms.demo_owner_partner_1" />
+      <field name="reviewer_id" ref="slms.demo_operator_partner_1" />
+      <field name="approver_id" ref="slms.demo_operator_partner_1" />
+      <field name="notes">Demo log 29 for ship_demo_10</field>
+    </record>
+    <record id="log_ship_demo_10_30" model="ship.ship_process">
+      <field name="ship_id" ref="ship_demo_10" />
+      <field name="process_id" ref="process_recycling" />
+      <field name="status_id" ref="status_approved" />
+      <field name="date_started">2023-01-20</field>
+      <field name="date_completed">2023-02-17</field>
+      <field name="preparer_id" ref="slms.demo_owner_partner_1" />
+      <field name="reviewer_id" ref="slms.demo_operator_partner_1" />
+      <field name="approver_id" ref="slms.demo_operator_partner_1" />
+      <field name="notes">Demo log 30 for ship_demo_10</field>
+    </record>
+  </data>
+</odoo>

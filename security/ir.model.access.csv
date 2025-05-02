@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_ship_ship,ship.ship,model_ship_ship,base.group_user,1,1,1,1
+access_ship_process,ship.process,model_ship_process,base.group_user,1,1,1,1
+access_ship_process_status,ship.process.status,model_ship_process_status,base.group_user,1,1,1,1
+access_ship_ship_process,ship.ship_process,model_ship_ship_process,base.group_user,1,1,1,1
